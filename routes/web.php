@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*
+
+Apply the middleware on your routes:
+jream user verification
+
+Route::group(['middleware' => ['isVerified']], function () {
+    // …
+
+ */
