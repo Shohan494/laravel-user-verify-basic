@@ -102,5 +102,15 @@ class RegisterController extends Controller
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
+        // IN THIS CASE THE RETURN WILL BE A MESSAGE THAT AN EMAIL HAS BEEN SENT
     }
 }
+
+
+/*
+NOTE
+
+If you want to perform the verification against an authenticated user you must update the middleware exception to allow getVerification and getVerificationError routes to be accessed.
+
+$this->middleware('guest', ['except' => ['getVerification', 'getVerificationError']]);
+ */
