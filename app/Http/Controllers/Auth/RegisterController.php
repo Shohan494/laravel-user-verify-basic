@@ -100,9 +100,12 @@ class RegisterController extends Controller
 
         UserVerification::send($user, 'My Custom E-mail Subject');
 
+        /*
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
-        // IN THIS CASE THE RETURN WILL BE A MESSAGE THAT AN EMAIL HAS BEEN SENT
+        */
+       
+        return 
     }
 }
 
