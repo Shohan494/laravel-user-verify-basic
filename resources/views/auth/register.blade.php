@@ -1,5 +1,21 @@
 @extends('layouts.app')
 
+@if(Session::has('alert'))
+
+<div class="alert alert-success">
+
+    {{ Session::get('alert') }}
+
+    @php
+
+    Session::forget('alert');
+
+    @endphp
+
+</div>
+
+@endif
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

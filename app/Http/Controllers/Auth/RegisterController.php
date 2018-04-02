@@ -28,7 +28,6 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
     use VerifiesUsers;
 
     /**
@@ -86,26 +85,16 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $user = $this->create($request->all());
 
-        event(new Registered($user));
-
-        $this->guard()->login($user);
-
         UserVerification::generate($user);
-
         UserVerification::send($user, 'My Custom E-mail Subject');
-
-        /*
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-        */
-       
-        return 
+        
+        return back()->withAlert('Register successfully, please verify your email.');
     }
 }
 
