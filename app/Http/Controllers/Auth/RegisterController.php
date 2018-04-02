@@ -92,8 +92,9 @@ class RegisterController extends Controller
         $user = $this->create($request->all());
 
         UserVerification::generate($user);
-        UserVerification::send($user, 'My Custom E-mail Subject');
-        
+        UserVerification::send($user, 'VERIFICATION CODE MAIL');
+
+        //return view('vendor/laravel-user-verification/email');
         return back()->withAlert('Register successfully, please verify your email.');
     }
 }
